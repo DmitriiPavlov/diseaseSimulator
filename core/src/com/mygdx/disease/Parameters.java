@@ -12,30 +12,30 @@ public class Parameters {
 
     //time in carrier phase
     //from 0 to 15
-    public static float incubationTime;
+    public static float incubationTime = 5;
     //time in sick phase
     //from 0 to 15
-    public static float sicknessTime;
+    public static float sicknessTime = 12;
     //time spend in cured phase
-    public static float curedTime;
+    public static float curedTime = 50;
 
     //this is the length of a day in milliseconds
-    public static long dayLength = 1000 * 12;
+    public static long dayLength = 1000 * 1 ;
 
     //the probability that a person dies on a given day
-    public static float deadlinessPerDay;
+    public static float deadlinessPerDay = 0.1f;
 
     public static float deadlinessPerFrame;
 
     //the probability that a person infects another person per day, if that person spent the entire day
     //in the other person's circle
-    public static float infectiousnessPerDay = 0.7f;
+    public static float infectiousnessPerDay = 0.9f;
 
     public static float infectiousnessPerFrame;
     public static float moveSpeed = 2;
 
     //the radius around each character where they are capable of infecting another character
-    public static float infectiousRadius = 8;
+    public static float infectiousRadius = 1;
 
     //determines whether the radius is doubled
     public static boolean masks;
@@ -45,13 +45,14 @@ public class Parameters {
 
     //dayLength, infectiousnessperday must all be initialized
     public static void computeInfectiousness(){
-        //P(infection) = 1 - P(not infection in one interaction)^numberofinteractions
+        //P(infection in one day) = 1 - P(not infection in one interaction)^numberofinteractions per day
         //1-P(infection) = P(not infection in one interaction)^numberofinteractions
         //log(1-P(infection) = numberofinteractions*log(P(not infection in one interaction)
         //we convert days to seconds
         // 1 day * dayLength in milliseconds * 1 second/ 1000 milliseconds * 60 interactions per second
         float numberOfInteractions = (float) (1 * dayLength * 1/1000 * 60);
-        infectiousnessPerFrame = (float) Math.pow(2.0,MathUtils.log2((1 - infectiousnessPerDay)/numberOfInteractions));
+        infectiousnessPerFrame = 1.0f - (float) Math.pow(1-infectiousnessPerDay,1.0f/numberOfInteractions);
+        System.out.println(infectiousnessPerFrame);
     }
 
     //dayLength, deadlinessperday must all be initialized
@@ -62,7 +63,7 @@ public class Parameters {
         //we convert days to seconds
         // 1 day * dayLength in milliseconds * 1 second/ 1000 milliseconds * 60 interactions per second
         float numberOfInteractions = (float) (1 * dayLength * 1/1000 * 60);
-        deadlinessPerFrame = (float) Math.pow(2.0,MathUtils.log2((1 - deadlinessPerDay)/numberOfInteractions));
+        deadlinessPerFrame = 1.0f - (float) Math.pow(1-deadlinessPerDay,1.0f/numberOfInteractions);
     }
 
     public static void computeCuredTime(){

@@ -21,10 +21,11 @@ public class World extends Stage {
             this.addActor(new Human());
         }
         Human h = new Human();
-        h.phase = Phase.Sick;
+        h.setPhase(Phase.Sick);
         this.addActor(h);
 
         Parameters.computeInfectiousness();
+        Parameters.computeDeadliness();
     }
 
     public void resize(int width, int height){

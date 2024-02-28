@@ -19,6 +19,7 @@ public class DiseaseSimulator extends ApplicationAdapter {
 		ScreenUtils.clear(0, 0, 0, 1);
 		w.act();
 		w.draw();
+		System.out.println(w.humanList.size());
 	}
 	
 	@Override
