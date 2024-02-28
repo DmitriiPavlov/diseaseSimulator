@@ -4,9 +4,11 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.PooledLinkedList;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import org.w3c.dom.css.Rect;
 
 public class World extends Stage {
     PooledLinkedList<Human> humanList;
+
 
     public World() {
         super(new FitViewport(84, 60));
@@ -21,7 +23,7 @@ public class World extends Stage {
             this.addActor(new Human());
         }
         Human h = new Human();
-        h.setPhase(Phase.Sick);
+        h.setPhase(Phase.Carrier);
         this.addActor(h);
 
         Parameters.computeInfectiousness();
