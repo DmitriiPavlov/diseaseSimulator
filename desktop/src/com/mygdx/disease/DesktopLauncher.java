@@ -10,7 +10,7 @@ public class DesktopLauncher {
 		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
 		config.setForegroundFPS(60);
 		config.setWindowedMode(800,800);
-		config.setResizable(true);
+//		config.setResizable(true);
 		config.setTitle("Disease Simulator");
 		new Lwjgl3Application(new DiseaseSimulator(), config);
 	}

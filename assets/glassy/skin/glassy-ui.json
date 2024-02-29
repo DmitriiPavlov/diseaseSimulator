@@ -210,4 +210,6 @@ com.badlogic.gdx.scenes.scene2d.ui.Window$WindowStyle: {
 		titleFontColor: black
 	}
 }
+
 }
+
