@@ -64,7 +64,7 @@ public class WelcomeScreen extends Stage {
         };
         diseaseTable.add(deathRateSlider).height(80).left();
 
-        movementSpeedSlider = new ParameterSlider("Movemenent speed: ","This how fast the humans move in the simulation. " +
+        movementSpeedSlider = new ParameterSlider("Movemennt speed: ","This how fast the humans move in the simulation. " +
                 "May affect\nthe rate of disease spread.",1.0f,5.0f){
             @Override
             public void variableModifier() {
